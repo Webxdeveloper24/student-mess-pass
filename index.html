@@ -1,0 +1,156 @@
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Student Mess Pass</title>
+  <style>
+    * { box-sizing: border-box; }
+    body {
+      margin: 0;
+      background: #f1f3f6;
+      font-family: Arial, sans-serif;
+      color: #242424;
+    }
+    header {
+      background: #184b8b;
+      color: white;
+      text-align: center;
+      padding: 18px;
+      font-size: 22px;
+      font-weight: bold;
+    }
+    .pass {
+      background: white;
+      max-width: 420px;
+      margin: 20px auto;
+      padding: 22px;
+      border-radius: 15px;
+      box-shadow: 0 4px 20px #00000014;
+    }
+    .subtitle {
+      text-align: center;
+      color: #666;
+      margin-bottom: 20px;
+    }
+    .avatar {
+      width: 88px;
+      height: 88px;
+      border-radius: 50%;
+      background: #e6eef9;
+      color: #184b8b;
+      display: grid;
+      place-items: center;
+      font-size: 40px;
+      margin: auto;
+    }
+    h2 { text-align: center; margin-bottom: 4px; }
+    .details { margin-top: 22px; }
+    .detail {
+      display: flex;
+      justify-content: space-between;
+      gap: 12px;
+      border-bottom: 1px solid #eee;
+      padding: 13px 0;
+      font-size: 14px;
+    }
+    .detail span:first-child { color: #666; }
+    .detail strong { text-align: right; }
+    .approved {
+      background: #e8f7ed;
+      color: #16743a;
+      padding: 14px;
+      border-radius: 10px;
+      text-align: center;
+      font-weight: bold;
+      margin-top: 20px;
+    }
+    .qr-section { text-align: center; margin-top: 24px; }
+    #qr {
+      display: inline-block;
+      padding: 10px;
+      background: white;
+      border: 1px solid #ddd;
+    }
+    .note {
+      text-align: center;
+      color: #777;
+      font-size: 12px;
+      margin-top: 15px;
+    }
+    footer {
+      text-align: center;
+      font-size: 12px;
+      color: #888;
+      margin: 20px;
+    }
+  </style>
+</head>
+<body>
+  <header>Student Mess Pass</header>
+
+  <main class="pass">
+    <p class="subtitle">Digital Meal Pass</p>
+    <div class="avatar">🎓</div>
+
+    <h2>Demo Student</h2>
+    <p class="subtitle">Student ID: DEMO-001</p>
+
+    <section class="details">
+      <div class="detail">
+        <span>University</span>
+        <strong>Demo University</strong>
+      </div>
+      <div class="detail">
+        <span>Assigned Mess</span>
+        <strong>Mess Block A</strong>
+      </div>
+      <div class="detail">
+        <span>Date</span>
+        <strong id="date"></strong>
+      </div>
+      <div class="detail">
+        <span>Meal</span>
+        <strong>Lunch</strong>
+      </div>
+      <div class="detail">
+        <span>Verification Code</span>
+        <strong>DEMO-ONLY</strong>
+      </div>
+    </section>
+
+    <div class="approved">✓ Meal Approved — Demo</div>
+
+    <div class="qr-section">
+      <h3>Scan Mess Pass</h3>
+      <div id="qr"></div>
+      <p class="note">Scan to open this demo pass.</p>
+    </div>
+  </main>
+
+  <footer>StudentMessPass • Educational Demo Only</footer>
+
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/qrcodejs/1.0.0/qrcode.min.js"></script>
+  <script>
+    document.getElementById("date").textContent =
+      new Date().toLocaleDateString("en-IN", {
+        day: "2-digit",
+        month: "long",
+        year: "numeric"
+      });
+
+    if (typeof QRCode !== "undefined") {
+      new QRCode(document.getElementById("qr"), {
+        text: window.location.href,
+        width: 180,
+        height: 180,
+        correctLevel: QRCode.CorrectLevel.M
+      });
+    } else {
+      document.getElementById("qr").textContent =
+        "QR code unavailable";
+    }
+  </script>
+</body>
+</html>
