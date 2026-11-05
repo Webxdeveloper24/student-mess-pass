@@ -1,0 +1,15 @@
+
+[
+  {
+    "relation": [
+      "delegate_permission/common.handle_all_urls"
+    ],
+    "target": {
+      "namespace": "android_app",
+      "package_name": "com.student.messpass",
+      "sha256_cert_fingerprints": [
+        "F9:39:24:C7:20:CD:77:55:02:03:18:A2:74:02:72:56:38:95:35:AE:0D:A1:B6:51:07:C8:5F:2C:B2:DD:74:E0"
+      ]
+    }
+  }
+]
